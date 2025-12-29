@@ -1,0 +1,38 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "kdl",
+      "camelcase": "Kdl",
+      "title": "Kdl",
+      "scope": "source.kdl",
+      "file-types": [
+        "kdl"
+      ],
+      "injection-regex": "^kdl$",
+      "class-name": "TreeSitterKdl"
+    }
+  ],
+  "metadata": {
+    "version": "1.1.1",
+    "license": "MIT",
+    "description": "KDL grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Amaan Qureshi <amaanq12@gmail.com>"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/amaanq/tree-sitter-kdl"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

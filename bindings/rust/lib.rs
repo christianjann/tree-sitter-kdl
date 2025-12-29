@@ -21,6 +21,7 @@
 //! [tree-sitter]: https://tree-sitter.github.io/
 
 use tree_sitter::Language;
+use tree_sitter_language::LanguageFn;
 
 extern "C" {
     fn tree_sitter_kdl() -> Language;
@@ -32,6 +33,15 @@ extern "C" {
 pub fn language() -> Language {
     unsafe { tree_sitter_kdl() }
 }
+
+/// The tree-sitter [`LanguageFn`][LanguageFn] for this grammar.
+///
+/// [LanguageFn]: https://docs.rs/tree-sitter-language/*/tree_sitter_language/struct.LanguageFn.html
+pub const LANGUAGE: LanguageFn = unsafe {
+    LanguageFn::from_raw(std::mem::transmute(
+        tree_sitter_kdl as unsafe extern "C" fn() -> Language,
+    ))
+};
 
 /// The source of the Rust tree-sitter grammar description.
 pub const GRAMMAR: &str = include_str!("../../grammar.js");
